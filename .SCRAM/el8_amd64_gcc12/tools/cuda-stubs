@@ -1,0 +1,25 @@
+{
+  "CUDA_STUBS_BASE": "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cuda/12.4.1-7dabbbd48d90f06129d35218df83eb73",
+  "FLAGS": {
+    "SKIP_TOOL_SYMLINKS": [
+      "1"
+    ]
+  },
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cuda/12.4.1-7dabbbd48d90f06129d35218df83eb73/include"
+  ],
+  "LIB": [
+    "cuda"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cuda/12.4.1-7dabbbd48d90f06129d35218df83eb73/lib64/stubs"
+  ],
+  "TOOLNAME": "cuda-stubs",
+  "TOOLREVISION": "1",
+  "TOOLVERSION": "12.4.1-7dabbbd48d90f06129d35218df83eb73",
+  "VARIABLES": [
+    "CUDA_STUBS_BASE",
+    "LIBDIR",
+    "INCLUDE"
+  ]
+}

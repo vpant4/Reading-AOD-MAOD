@@ -1,0 +1,412 @@
+DEBUG 2024-04-23 00:43:53.596 UTC: 	 CRAB Client version: v3.240110
+DEBUG 2024-04-23 00:43:53.596 UTC: 	 Running on: Linux lxplus803.cern.ch 4.18.0-513.24.1.el8_9.x86_64 #1 SMP Thu Mar 14 14:20:09 EDT 2024 x86_64 x86_64 x86_64 GNU/Linux - Red Hat Enterprise Linux 8.9 (Ootpa)
+DEBUG 2024-04-23 00:43:53.596 UTC: 	 Executing command: 'submit'
+DEBUG 2024-04-23 00:43:53.596 UTC: 	 Found CRAB cache file /afs/cern.ch/user/r/rpradhan/.crab3
+INFO 2024-04-23 00:43:53.597 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2024-04-23 00:43:53.597 UTC: 	 Loading CRAB configuration file.
+DEBUG 2024-04-23 00:43:53.600 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2024-04-23 00:43:53.600 UTC: 	 Working area '/afs/cern.ch/work/r/rpradhan/Tracking_Studies/newCode_AfterRun3/ForEffTest/CMSSW_13_2_5_patch1/src/Analyzers/RaghuEffTest/crab/TrackingStudies_Run3/crab_GeneralTracks_MAOD_effCorrectionTest_V1' already exists 
+Please change the requestName in the config file
+ERROR 2024-04-23 00:43:53.600 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240110.01/bin/crab.py", line 152, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240110.01/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240110.01/lib/CRABClient/Commands/submit.py", line 36, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240110.01/lib/CRABClient/Commands/SubCommand.py", line 327, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240110.01/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/work/r/rpradhan/Tracking_Studies/newCode_AfterRun3/ForEffTest/CMSSW_13_2_5_patch1/src/Analyzers/RaghuEffTest/crab/TrackingStudies_Run3/crab_GeneralTracks_MAOD_effCorrectionTest_V1' already exists 
+Please change the requestName in the config file
+INFO 2024-04-23 00:43:53.603 UTC: 	 Log file is /afs/cern.ch/work/r/rpradhan/Tracking_Studies/newCode_AfterRun3/ForEffTest/CMSSW_13_2_5_patch1/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2024-10-19 22:05:25.483 UTC: 	 CRAB Client version: v3.240621
+DEBUG 2024-10-19 22:05:25.483 UTC: 	 Running on: Linux lxplus819.cern.ch 4.18.0-553.16.1.el8_10.x86_64 #1 SMP Thu Aug 1 04:16:12 EDT 2024 x86_64 x86_64 x86_64 GNU/Linux - Red Hat Enterprise Linux 8.10 (Ootpa)
+DEBUG 2024-10-19 22:05:25.483 UTC: 	 Executing command: 'submit'
+DEBUG 2024-10-19 22:05:25.499 UTC: 	 Found CRAB cache file /afs/cern.ch/user/r/rpradhan/.crab3
+INFO 2024-10-19 22:05:25.722 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2024-10-19 22:05:25.722 UTC: 	 Loading CRAB configuration file.
+ERROR 2024-10-19 22:05:25.729 UTC: 	 Invalid CRAB configuration: Parameter General.requestName should not be longer than 100 characters.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2024-10-19 22:05:25.729 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/bin/crab.py", line 152, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/lib/CRABClient/Commands/submit.py", line 36, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/lib/CRABClient/Commands/SubCommand.py", line 325, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/lib/CRABClient/Commands/SubCommand.py", line 96, in loadConfig
+    raise ConfigurationException(configmsg)
+CRABClient.ClientExceptions.ConfigurationException: Invalid CRAB configuration: Parameter General.requestName should not be longer than 100 characters.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+INFO 2024-10-19 22:05:25.732 UTC: 	 Log file is /afs/cern.ch/work/r/rpradhan/Tracking_Studies/newCode_AfterRun3/ForEffTest/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2024-10-19 22:06:17.326 UTC: 	 CRAB Client version: v3.240621
+DEBUG 2024-10-19 22:06:17.327 UTC: 	 Running on: Linux lxplus819.cern.ch 4.18.0-553.16.1.el8_10.x86_64 #1 SMP Thu Aug 1 04:16:12 EDT 2024 x86_64 x86_64 x86_64 GNU/Linux - Red Hat Enterprise Linux 8.10 (Ootpa)
+DEBUG 2024-10-19 22:06:17.327 UTC: 	 Executing command: 'submit'
+DEBUG 2024-10-19 22:06:17.327 UTC: 	 Found CRAB cache file /afs/cern.ch/user/r/rpradhan/.crab3
+INFO 2024-10-19 22:06:17.328 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2024-10-19 22:06:17.328 UTC: 	 Loading CRAB configuration file.
+DEBUG 2024-10-19 22:06:17.333 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2024-10-19 22:06:17.333 UTC: 	 Invalid CRAB configuration: A local DBS instance 'phys03' was specified for reading an input dataset of tier None.
+Datasets of tier different than USER must be read from the global DBS instance; this is, set Data.inputDBS = 'global'.
+If Data.inputDBS would not be specified, the default 'global' ('https://cmsweb.cern.ch/dbs/prod/global/DBSReader') would be used.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2024-10-19 22:06:17.333 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/bin/crab.py", line 152, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/lib/CRABClient/Commands/submit.py", line 36, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/lib/CRABClient/Commands/SubCommand.py", line 325, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.240621.01/lib/CRABClient/Commands/SubCommand.py", line 96, in loadConfig
+    raise ConfigurationException(configmsg)
+CRABClient.ClientExceptions.ConfigurationException: Invalid CRAB configuration: A local DBS instance 'phys03' was specified for reading an input dataset of tier None.
+Datasets of tier different than USER must be read from the global DBS instance; this is, set Data.inputDBS = 'global'.
+If Data.inputDBS would not be specified, the default 'global' ('https://cmsweb.cern.ch/dbs/prod/global/DBSReader') would be used.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+INFO 2024-10-19 22:06:17.335 UTC: 	 Log file is /afs/cern.ch/work/r/rpradhan/Tracking_Studies/newCode_AfterRun3/ForEffTest/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2024-12-19 20:39:50.745 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-19 20:39:50.745 UTC: 	 Running on: Linux lxplus943.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-19 20:39:50.745 UTC: 	 Not using Singularity
+DEBUG 2024-12-19 20:39:50.745 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-19 20:39:50.745 UTC: 	 Executing command: 'submit'
+DEBUG 2024-12-19 20:39:50.745 UTC: 	 Could not find CRAB cache file /afs/cern.ch/user/v/vpant/.crab3; creating a new one.
+INFO 2024-12-19 20:39:50.748 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2024-12-19 20:39:50.748 UTC: 	 Loading CRAB configuration file.
+DEBUG 2024-12-19 20:39:50.751 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2024-12-19 20:39:50.774 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/TrackingStudies_Run3/crab_GeneralTracks_RECODEBUG_QCDSample_effCorrectionTest_ptGt10ptResoCut_twoDiffEffFile' already exists 
+Please change the requestName in the config file
+ERROR 2024-12-19 20:39:50.774 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/TrackingStudies_Run3/crab_GeneralTracks_RECODEBUG_QCDSample_effCorrectionTest_ptGt10ptResoCut_twoDiffEffFile' already exists 
+Please change the requestName in the config file
+INFO 2024-12-19 20:39:50.791 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2024-12-19 20:40:34.410 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-19 20:40:34.410 UTC: 	 Running on: Linux lxplus943.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-19 20:40:34.410 UTC: 	 Not using Singularity
+DEBUG 2024-12-19 20:40:34.410 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-19 20:40:34.410 UTC: 	 Executing command: 'submit'
+DEBUG 2024-12-19 20:40:34.410 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2024-12-19 20:40:34.410 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2024-12-19 20:40:34.410 UTC: 	 Loading CRAB configuration file.
+DEBUG 2024-12-19 20:40:34.411 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2024-12-19 20:40:34.411 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/TrackingStudies_Run3/crab_GeneralTracks_RECODEBUG_QCDSample_effCorrectionTest_ptGt10ptResoCut_twoDiffEffFile' already exists 
+Please change the requestName in the config file
+ERROR 2024-12-19 20:40:34.411 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/TrackingStudies_Run3/crab_GeneralTracks_RECODEBUG_QCDSample_effCorrectionTest_ptGt10ptResoCut_twoDiffEffFile' already exists 
+Please change the requestName in the config file
+INFO 2024-12-19 20:40:34.413 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2024-12-19 20:46:38.110 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2024-12-19 20:46:38.110 UTC: 	 Running on: Linux lxplus943.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2024-12-19 20:46:38.110 UTC: 	 Not using Singularity
+DEBUG 2024-12-19 20:46:38.110 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2024-12-19 20:46:38.110 UTC: 	 Executing command: 'status'
+DEBUG 2024-12-19 20:46:38.110 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+ERROR 2024-12-19 20:46:38.111 UTC: 	 Cannot find .requestcache file in CRAB project directory /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab
+ERROR 2024-12-19 20:46:38.111 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 695, in validateOptions
+    self.loadLocalCache()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 537, in loadLocalCache
+    raise ex
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 531, in loadLocalCache
+    self.cachedinfo, self.logfile = loadCache(self.requestarea, self.logger)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 445, in loadCache
+    raise CachefileNotFoundException(msg)
+CRABClient.ClientExceptions.CachefileNotFoundException: Cannot find .requestcache file in CRAB project directory /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab
+INFO 2024-12-19 20:46:38.297 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-01-06 03:54:08.141 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-06 03:54:08.141 UTC: 	 Running on: Linux lxplus946.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-06 03:54:08.141 UTC: 	 Not using Singularity
+DEBUG 2025-01-06 03:54:08.141 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-06 03:54:08.141 UTC: 	 Executing command: 'submit'
+DEBUG 2025-01-06 03:54:08.142 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-01-06 03:54:08.166 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-01-06 03:54:08.166 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-01-06 03:54:08.288 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-01-06 03:54:08.308 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+ERROR 2025-01-06 03:54:08.308 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+INFO 2025-01-06 03:54:08.327 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-01-06 03:58:15.866 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-06 03:58:15.866 UTC: 	 Running on: Linux lxplus956.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-06 03:58:15.866 UTC: 	 Not using Singularity
+DEBUG 2025-01-06 03:58:15.866 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-06 03:58:15.866 UTC: 	 Executing command: 'submit'
+DEBUG 2025-01-06 03:58:15.866 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-01-06 03:58:15.868 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-01-06 03:58:15.868 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-01-06 03:58:15.870 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-01-06 03:58:15.871 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+ERROR 2025-01-06 03:58:15.872 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+INFO 2025-01-06 03:58:15.875 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-01-06 03:59:53.579 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-06 03:59:53.580 UTC: 	 Running on: Linux lxplus956.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-06 03:59:53.580 UTC: 	 Not using Singularity
+DEBUG 2025-01-06 03:59:53.580 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-06 03:59:53.580 UTC: 	 Executing command: 'submit'
+DEBUG 2025-01-06 03:59:53.580 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-01-06 03:59:53.580 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-01-06 03:59:53.580 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-01-06 03:59:53.587 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-01-06 03:59:53.587 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+ERROR 2025-01-06 03:59:53.587 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+INFO 2025-01-06 03:59:53.589 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-01-06 06:35:37.430 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-06 06:35:37.431 UTC: 	 Running on: Linux lxplus956.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-06 06:35:37.431 UTC: 	 Not using Singularity
+DEBUG 2025-01-06 06:35:37.431 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-06 06:35:37.431 UTC: 	 Executing command: 'kill'
+DEBUG 2025-01-06 06:35:37.432 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+ERROR 2025-01-06 06:35:37.432 UTC: 	 Error: Please indicate the CRAB project directory with --dir=<project-directory>.
+ERROR 2025-01-06 06:35:37.432 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 687, in validateOptions
+    raise ex
+CRABClient.ClientExceptions.MissingOptionException: [91mError[0m: Please indicate the CRAB project directory with --dir=<project-directory>.
+INFO 2025-01-06 06:35:37.435 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-01-06 06:35:42.489 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-06 06:35:42.489 UTC: 	 Running on: Linux lxplus956.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-06 06:35:42.489 UTC: 	 Not using Singularity
+DEBUG 2025-01-06 06:35:42.489 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-06 06:35:42.489 UTC: 	 Executing command: 'kill'
+DEBUG 2025-01-06 06:35:42.489 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+DEBUG 2025-01-06 09:56:44.195 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-06 09:56:44.195 UTC: 	 Running on: Linux lxplus929.cern.ch 5.14.0-503.15.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 14 15:45:31 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-06 09:56:44.195 UTC: 	 Not using Singularity
+DEBUG 2025-01-06 09:56:44.195 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-06 09:56:44.195 UTC: 	 Executing command: 'status'
+DEBUG 2025-01-06 09:56:44.195 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+ERROR 2025-01-06 09:56:44.196 UTC: 	 Error: 'crab status' command accepts at most 1 argument (a path to a CRAB project directory), 2 given.
+ERROR 2025-01-06 09:56:44.196 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/status.py", line 48, in __init__
+    SubCommand.__init__(self, logger, cmdargs)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 281, in __init__
+    SubCommand.validateOptions(self)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 671, in validateOptions
+    raise ConfigurationException(msg)
+CRABClient.ClientExceptions.ConfigurationException: [91mError[0m: 'crab status' command accepts at most 1 argument (a path to a CRAB project directory), 2 given.
+INFO 2025-01-06 09:56:44.199 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-01-06 18:05:00.200 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-01-06 18:05:00.200 UTC: 	 Running on: Linux lxplus951.cern.ch 5.14.0-503.14.1.el9_5.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Nov 7 15:41:49 EST 2024 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-01-06 18:05:00.200 UTC: 	 Not using Singularity
+DEBUG 2025-01-06 18:05:00.200 UTC: 	 Operating System: Red Hat Enterprise Linux 9.5 (Plow)
+DEBUG 2025-01-06 18:05:00.200 UTC: 	 Executing command: 'submit'
+DEBUG 2025-01-06 18:05:00.200 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-01-06 18:05:00.200 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-01-06 18:05:00.201 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-01-06 18:05:00.272 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-01-06 18:05:00.272 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+ERROR 2025-01-06 18:05:00.272 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+INFO 2025-01-06 18:05:00.291 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_13_2_10/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-03-03 00:57:59.586 UTC: 	 CRAB Client version: v3.241125
+DEBUG 2025-03-03 00:57:59.586 UTC: 	 Running on: Linux lxplus810.cern.ch 4.18.0-553.40.1.el8_10.x86_64 #1 SMP Thu Feb 6 21:20:51 EST 2025 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-03-03 00:57:59.586 UTC: 	 Not using Singularity
+DEBUG 2025-03-03 00:57:59.586 UTC: 	 Operating System: Red Hat Enterprise Linux 8.10 (Ootpa)
+DEBUG 2025-03-03 00:57:59.586 UTC: 	 Executing command: 'submit'
+DEBUG 2025-03-03 00:57:59.586 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-03-03 00:57:59.587 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-03-03 00:57:59.587 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-03-03 00:57:59.598 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-03-03 00:57:59.599 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+ERROR 2025-03-03 00:57:59.599 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.241125.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+INFO 2025-03-03 00:57:59.615 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-03-17 09:14:36.821 UTC: 	 CRAB Client version: v3.250217
+DEBUG 2025-03-17 09:14:36.821 UTC: 	 Running on: Linux lxplus818.cern.ch 4.18.0-553.40.1.el8_10.x86_64 #1 SMP Thu Feb 6 21:20:51 EST 2025 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-03-17 09:14:36.821 UTC: 	 Not using Singularity
+DEBUG 2025-03-17 09:14:36.821 UTC: 	 Operating System: Red Hat Enterprise Linux 8.10 (Ootpa)
+DEBUG 2025-03-17 09:14:36.821 UTC: 	 Executing command: 'submit'
+DEBUG 2025-03-17 09:14:36.822 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-03-17 09:14:36.886 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-03-17 09:14:36.886 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-03-17 09:14:36.916 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-03-17 09:14:36.917 UTC: 	 Invalid CRAB configuration: A local DBS instance 'phys03' was specified for reading an input dataset of tier None.
+Datasets of tier different than USER must be read from the global DBS instance; this is, set Data.inputDBS = 'global'.
+If Data.inputDBS would not be specified, the default 'global' ('https://cmsweb.cern.ch/dbs/prod/global/DBSReader') would be used.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+ERROR 2025-03-17 09:14:36.917 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/lib/CRABClient/Commands/SubCommand.py", line 326, in __init__
+    self.loadConfig(self.options.config, self.args)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/lib/CRABClient/Commands/SubCommand.py", line 95, in loadConfig
+    raise ConfigurationException(configmsg)
+CRABClient.ClientExceptions.ConfigurationException: Invalid CRAB configuration: A local DBS instance 'phys03' was specified for reading an input dataset of tier None.
+Datasets of tier different than USER must be read from the global DBS instance; this is, set Data.inputDBS = 'global'.
+If Data.inputDBS would not be specified, the default 'global' ('https://cmsweb.cern.ch/dbs/prod/global/DBSReader') would be used.
+The documentation about the CRAB configuration file can be found in https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile
+INFO 2025-03-17 09:14:36.937 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-03-17 09:17:01.600 UTC: 	 CRAB Client version: v3.250217
+DEBUG 2025-03-17 09:17:01.601 UTC: 	 Running on: Linux lxplus818.cern.ch 4.18.0-553.40.1.el8_10.x86_64 #1 SMP Thu Feb 6 21:20:51 EST 2025 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-03-17 09:17:01.601 UTC: 	 Not using Singularity
+DEBUG 2025-03-17 09:17:01.601 UTC: 	 Operating System: Red Hat Enterprise Linux 8.10 (Ootpa)
+DEBUG 2025-03-17 09:17:01.601 UTC: 	 Executing command: 'submit'
+DEBUG 2025-03-17 09:17:01.601 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-03-17 09:17:01.601 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-03-17 09:17:01.601 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-03-17 09:17:01.605 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-03-17 09:17:01.605 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+ERROR 2025-03-17 09:17:01.605 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250217.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+INFO 2025-03-17 09:17:01.607 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab.log
+DEBUG 2025-03-21 14:38:09.370 UTC: 	 CRAB Client version: v3.250318
+DEBUG 2025-03-21 14:38:09.370 UTC: 	 Running on: Linux lxplus810.cern.ch 4.18.0-553.40.1.el8_10.x86_64 #1 SMP Thu Feb 6 21:20:51 EST 2025 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2025-03-21 14:38:09.370 UTC: 	 Not using Singularity
+DEBUG 2025-03-21 14:38:09.370 UTC: 	 Operating System: Red Hat Enterprise Linux 8.10 (Ootpa)
+DEBUG 2025-03-21 14:38:09.370 UTC: 	 Executing command: 'submit'
+DEBUG 2025-03-21 14:38:09.470 UTC: 	 Found CRAB cache file /afs/cern.ch/user/v/vpant/.crab3
+INFO 2025-03-21 14:38:09.530 UTC: 	 Will use CRAB configuration file crab_config_MCRecoDebug.py
+DEBUG 2025-03-21 14:38:09.530 UTC: 	 Loading CRAB configuration file.
+DEBUG 2025-03-21 14:38:09.534 UTC: 	 Will use CRAB plugin ANALYSIS (i.e. will run an analysis job type).
+ERROR 2025-03-21 14:38:09.571 UTC: 	 Working area '/afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+ERROR 2025-03-21 14:38:09.571 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.250318.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab/crab_OOMC' already exists 
+Please change the requestName in the config file
+INFO 2025-03-21 14:38:09.599 UTC: 	 Log file is /afs/cern.ch/user/v/vpant/CMSSW_15_0_0_pre1_v2/CMSSW_15_0_0_pre1/src/Analyzers/RaghuEffTest/crab/crab.log

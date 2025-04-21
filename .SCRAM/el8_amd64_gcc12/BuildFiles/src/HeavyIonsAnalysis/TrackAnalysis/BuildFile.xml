@@ -1,0 +1,17 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "HeavyIonsAnalysisTrackAnalysis",
+  "USE": [
+    "root",
+    "DataFormats/Common",
+    "FWCore/Framework",
+    "FWCore/ServiceRegistry",
+    "FWCore/PluginManager",
+    "FWCore/ParameterSet",
+    "PhysicsTools/UtilAlgos"
+  ]
+}

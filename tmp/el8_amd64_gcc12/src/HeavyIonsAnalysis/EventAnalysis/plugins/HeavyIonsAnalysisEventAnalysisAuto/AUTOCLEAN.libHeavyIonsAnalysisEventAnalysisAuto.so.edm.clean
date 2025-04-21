@@ -1,0 +1,2 @@
+01:/usr/bin/rm -f lib/el8_amd64_gcc12/pluginHeavyIonsAnalysisEventAnalysisAuto.so lib/el8_amd64_gcc12/HeavyIonsAnalysisEventAnalysisAuto.edmplugin
+90:edmPluginRefresh lib/el8_amd64_gcc12

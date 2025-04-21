@@ -1,0 +1,28 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "HeavyIonsAnalysisJetAnalysis",
+  "USE": [
+    "root",
+    "hepmc",
+    "fastjet",
+    "fastjet-contrib",
+    "FWCore/PluginManager",
+    "FWCore/ParameterSet",
+    "FWCore/ServiceRegistry",
+    "FWCore/Framework",
+    "CommonTools/UtilAlgos",
+    "Geometry/Records",
+    "DataFormats/HepMCCandidate",
+    "DataFormats/PatCandidates",
+    "RecoJets/JetProducers",
+    "RecoHI/HiJetAlgos",
+    "DataFormats/HeavyIonEvent",
+    "CondFormats/JetMETObjects",
+    "SimDataFormats/GeneratorProducts",
+    "CalibFormats/HcalObjects"
+  ]
+}

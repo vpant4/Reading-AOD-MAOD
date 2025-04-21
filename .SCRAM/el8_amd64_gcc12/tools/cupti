@@ -1,0 +1,20 @@
+{
+  "CUPTI_BASE": "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cuda/12.4.1-7dabbbd48d90f06129d35218df83eb73",
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cuda/12.4.1-7dabbbd48d90f06129d35218df83eb73/include"
+  ],
+  "LIB": [
+    "cupti"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cuda/12.4.1-7dabbbd48d90f06129d35218df83eb73/lib64"
+  ],
+  "TOOLNAME": "cupti",
+  "TOOLREVISION": "1",
+  "TOOLVERSION": "12.4.1-7dabbbd48d90f06129d35218df83eb73",
+  "VARIABLES": [
+    "CUPTI_BASE",
+    "LIBDIR",
+    "INCLUDE"
+  ]
+}

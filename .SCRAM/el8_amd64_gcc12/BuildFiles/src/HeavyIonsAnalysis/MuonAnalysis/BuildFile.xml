@@ -1,0 +1,30 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "HeavyIonsAnalysisMuonAnalysis",
+  "USE": [
+    "clhep",
+    "root",
+    "FWCore/Framework",
+    "FWCore/PluginManager",
+    "FWCore/ParameterSet",
+    "FWCore/ServiceRegistry",
+    "DataFormats/HepMCCandidate",
+    "DataFormats/MuonReco",
+    "DataFormats/HeavyIonEvent",
+    "SimDataFormats/TrackingAnalysis",
+    "CommonTools/UtilAlgos",
+    "CondFormats/HIObjects",
+    "CondFormats/DataRecord",
+    "TrackingTools/TransientTrack",
+    "RecoVertex/KalmanVertexFit",
+    "DataFormats/TrackReco",
+    "DataFormats/TrackerRecHit2D",
+    "DataFormats/TrackingRecHit",
+    "RecoTracker/TkTrackingRegions",
+    "TrackingTools/IPTools"
+  ]
+}

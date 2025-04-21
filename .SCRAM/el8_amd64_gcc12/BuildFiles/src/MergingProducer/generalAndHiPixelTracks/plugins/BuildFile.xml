@@ -1,0 +1,28 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "MergingProducergeneralAndHiPixelTracksAuto": {
+        "FILES": "",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "FWCore/Framework",
+    "FWCore/PluginManager",
+    "FWCore/ParameterSet",
+    "DataFormats/TrackReco",
+    "DataFormats/Math",
+    "DataFormats/PatCandidates"
+  ]
+}

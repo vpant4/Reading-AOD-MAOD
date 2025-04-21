@@ -1,0 +1,472 @@
+// -*- C++ -*-   
+//         Author: Raghunath Pradhan
+//         Class: RaghuEffTest 
+//         Date created on April 8, 2024
+//         miniAOD / AOD
+//         
+
+// CMSSW include files
+#include "FWCore/ServiceRegistry/interface/Service.h"
+#include "CommonTools/UtilAlgos/interface/TFileService.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+#include "SimDataFormats/GeneratorProducts/interface/GenEventInfoProduct.h"
+// user include files
+#include "Analyzers/RaghuEffTest/interface/RaghuEffTest.h"
+#include <string>
+
+//  constructors and destructor
+
+RaghuEffTest::RaghuEffTest(const edm::ParameterSet& iConfig) :  //Parametrized Constructor
+  //******TRACKED PARAMETER********
+
+  //tracks & vertex
+  //      trackTags_(consumes< edm::View< pat::PackedCandidate> >(iConfig.getParameter<edm::InputTag>("tracks"))), // uncomment for MAOD
+  //  trackTagsgen_(consumes< edm::View< pat::PackedGenParticle> >(iConfig.getParameter<edm::InputTag>("tracksgen"))), // uncomment for MAOD
+  
+      trackTags_(consumes<reco::TrackCollection>(iConfig.getParameter<edm::InputTag>("tracks"))), // uncomment for AOD
+      trackTagsgen_(consumes<reco::GenParticleCollection>(iConfig.getParameter<edm::InputTag>("tracksgen"))), // uncomment for AOD
+  
+      //chi2Map_( consumes< edm::ValueMap< float > >( iConfig.getParameter< edm::InputTag >( "trackschi2" ) ) ), // uncomment for MAOD
+  vtxTags_(consumes<reco::VertexCollection>(iConfig.getParameter<edm::InputTag>("vertex"))),
+    //vtxTags_(consumes<reco::VertexCollection>(iConfig.getParameter<edm::InputTag>("vertex"))),
+  genInfoToken_(consumes<GenEventInfoProduct>(edm::InputTag("generator"))),
+     //genInfoToken_(consumes<GenEventInfoProduct>(iConfig.getParameter<edm::InputTag>("generator"))),
+  //centrality bin
+    //  cent_bin_(consumes<int>(iConfig.getParameter<edm::InputTag>("centralitybin"))),
+    // caloTowerTags_(consumes<CaloTowerCollection>(iConfig.getParameter<edm::InputTag>("CaloTowerSrc"))),  
+  //******UNTRACKED PARAMETER****************
+  //vertex selection
+  zminVtx_(iConfig.getUntrackedParameter<double>("zminVtx")),
+  zmaxVtx_(iConfig.getUntrackedParameter<double>("zmaxVtx")),
+
+  //EFF Correction
+  fGeneral_(iConfig.getUntrackedParameter<edm::InputTag>("fGeneral")),
+  fGeneral2_(iConfig.getUntrackedParameter<edm::InputTag>("fGeneral2")),
+
+  //binning
+  pTBins_(iConfig.getUntrackedParameter< std::vector < double > >("pTBins")),
+  etaBins_(iConfig.getUntrackedParameter< std::vector < double > >("etaBins")),
+    // centbins_(iConfig.getUntrackedParameter< std::vector < double > >("centbins")),
+  algoParameters_(iConfig.getParameter< std::vector < int > >("algoParameters"))
+
+
+  
+  
+   
+{  
+  //*****Defining Histograms & Profile Histograms********************                  
+  TH1::SetDefaultSumw2();
+  TH2::SetDefaultSumw2();
+  TH3::SetDefaultSumw2();
+
+  //**************************For efficiency correction ******************************************************
+  feff_ = 0x0; 
+  TString f_General(fGeneral_.label().c_str());
+  if(!f_General.IsNull())
+    {
+      edm::FileInPath f1 (Form("Analyzers/RaghuEffTest/data/EFF/general_tracks/%s",f_General.Data()));
+      feff_ = new TFile(f1.fullPath().c_str(),"READ");
+      //trkEff = new TrkEff2018PbPb("general", "", false, "/afs/cern.ch/work/r/rpradhan/Tracking_Studies/newCode_AfterRun3/ForEffTest/CMSSW_13_2_5_patch1/src/Analyzers/RaghuEffTest/data/EFF/general_tracks");
+      
+      std::cout<<"efficiecny file name is: "<<feff_->GetName()<<std::endl;
+    }
+
+  /*feff2_ = 0x0; 
+  TString f_General2(fGeneral2_.label().c_str());
+  if(!f_General2.IsNull())
+    {
+      edm::FileInPath f2 (Form("Analyzers/RaghuEffTest/data/EFF/general_tracks/%s",f_General2.Data()));
+      feff2_ = new TFile(f2.fullPath().c_str(),"READ");
+      //trkEff = new TrkEff2018PbPb("general", "", false, "/afs/cern.ch/work/r/rpradhan/Tracking_Studies/newCode_AfterRun3/ForEffTest/CMSSW_13_2_5_patch1/src/Analyzers/RaghuEffTest/data/EFF/general_tracks");
+      
+      std::cout<<"efficiecny2 file name is: "<<feff2_->GetName()<<std::endl;
+    }
+  */
+  hEff2D = (TH2F*)feff_->Get("hEff_2D");
+  hFak2D = (TH2F*)feff_->Get("hFak_2D");
+  hSec2D = (TH2F*)feff_->Get("hSec_2D");
+  hMul2D = (TH2F*)feff_->Get("hMul_2D");
+  
+  feff_->Close();
+  //feff2_->Close();
+
+  usesResource("TFileService");
+  edm::Service<TFileService> fs;
+  //  double pTbins[]={0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.4,1.6,1.8,2.0,2.2,2.4,3.2,4.0,4.8,5.6,6.4,7.2,9.6,12.,14.4,19.2,24.,28.8,35.2,41.6,48.,60.8,73.6,86.4,103.6,120.8,140.,165.,250.,400.};
+
+  double pTbins[]={0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45,
+        0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95,
+        1.0, 1.05, 1.1, 1.15, 1.2,
+        1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
+        2.5, 3.0, 4.0, 5.0, 7.5, 10.0, 12.0, 15.0,
+        20.0, 25.0, 30.0, 45.0, 60.0, 90.0, 120.0, 
+		   180.0, 300.0, 500.0};
+
+  
+  int nptbins=sizeof(pTbins) / sizeof(pTbins[0]) - 1;
+
+  TFileDirectory fGlobalHist = fs->mkdir("QAplots");
+  hZBestVtx    = fGlobalHist.make<TH1F>("hZvtx", "", 600, -30.0, 30.0);
+  hcent_bin    = fGlobalHist.make<TH1F>("hcent_bin", "", 100, 0.0, 110);
+  hcentbin     = fGlobalHist.make<TH1F>("hcentbin", "", centbins_.size()-1, &centbins_[0]);
+
+  hpt_gen_inc  = fGlobalHist.make<TH1F>("hpt_gen_inc","",nptbins,pTbins);
+  heta_gen_inc  = fGlobalHist.make<TH1F>("heta_gen_inc","",500,-3.,3.);
+  hphi_gen_inc  = fGlobalHist.make<TH1F>("hphi_gen_inc","",62, -TMath::Pi(), TMath::Pi());
+
+  hpt_inc  =    fGlobalHist.make<TH1F>("hpt_inc","",nptbins,pTbins);
+  hpt_inc_corr= fGlobalHist.make<TH1F>("hpt_inc_corr","",nptbins,pTbins);
+
+  heta_inc  = fGlobalHist.make<TH1F>("heta_inc","",500,-3.,3.);
+  hphi_inc  = fGlobalHist.make<TH1F>("hphi_inc","",62, -TMath::Pi(), TMath::Pi());
+
+  hNtrk_inc = fGlobalHist.make<TH1F>("hNtrk_inc","",2000,0,2000);
+
+  hHFSum= fGlobalHist.make<TH1F>("hHFSum","",40000,0.,800.);
+
+  hHF_Ntrk=fGlobalHist.make<TH2F>("hHF_Ntrk","",10000,0.,800.,1000,0.,1000.);
+  
+  //*************************************************
+  //hptbin     = fGlobalHist.make<TH1F>("hptbin", "", 30, 0., 3.);
+  hptbin     = fGlobalHist.make<TH1F>("hptbin", "", 500, 0., 50.);
+  hetabin     = fGlobalHist.make<TH1F>("hetabin", "", etaBins_.size()-1, &etaBins_[0]);
+  /*
+  // gen
+  hpt_gen.resize(centbins_.size());
+  heta_gen.resize(centbins_.size());
+  hphi_gen.resize(centbins_.size());
+
+  // reco
+  hpt.resize(centbins_.size());
+  heta.resize(centbins_.size());
+  hphi.resize(centbins_.size());
+  hnHits.resize(centbins_.size());
+  hptreso.resize(centbins_.size());
+  hchi2.resize(centbins_.size());
+  hDCAZ.resize(centbins_.size());
+  hDCAXY.resize(centbins_.size());
+  hNtrk.resize(centbins_.size());
+
+  // reco corrected
+  hpt_eff.resize(centbins_.size());
+  heta_eff.resize(centbins_.size());
+  hphi_eff.resize(centbins_.size());
+  hnHits_eff.resize(centbins_.size());
+  hptreso_eff.resize(centbins_.size());
+  hchi2_eff.resize(centbins_.size());
+  hDCAZ_eff.resize(centbins_.size());
+  hDCAXY_eff.resize(centbins_.size());*/
+
+  /*for(unsigned int i = 1; i <= centbins_.size(); i++)
+    {
+      //gen
+      //hpt_gen[i]          = fGlobalHist.make<TH1F>(Form("hpt_gen_%d", i), "", 30, 0., 3.);
+      hpt_gen[i]          = fGlobalHist.make<TH1F>(Form("hpt_gen_%d", i), "", 500, 0., 50.);
+      heta_gen[i]         = fGlobalHist.make<TH1F>(Form("heta_gen_%d",i), "", etaBins_.size()-1, &etaBins_[0]);
+      hphi_gen[i]         = fGlobalHist.make<TH1F>(Form("hphi_gen_%d",i), "", 62, -TMath::Pi(), TMath::Pi());
+
+      //reco
+      //hpt[i]              = fGlobalHist.make<TH1F>(Form("hpt_%d", i), "", 30, 0., 3.);
+      hpt[i]              = fGlobalHist.make<TH1F>(Form("hpt_%d", i), "", 500, 0., 50.);
+      heta[i]             = fGlobalHist.make<TH1F>(Form("heta_%d", i), "", etaBins_.size()-1, &etaBins_[0]);
+      hphi[i]             = fGlobalHist.make<TH1F>(Form("hphi_%d", i), "", 62, -TMath::Pi(), TMath::Pi());
+      hnHits[i]           = fGlobalHist.make<TH1F>(Form("hnHits_%d", i), "", 50, 0., 50.);
+      hptreso[i]          = fGlobalHist.make<TH1F>(Form("hptreso_%d", i), "", 100, 0., 1.);
+      hchi2[i]            = fGlobalHist.make<TH1F>(Form("hchi2_%d", i), "", 100, 0, 10.);
+      hDCAZ[i]            = fGlobalHist.make<TH1F>(Form("hDCAZ_%d", i), "", 80, -4., 4.);
+      hDCAXY[i]           = fGlobalHist.make<TH1F>(Form("hDCAXY_%d", i), "", 80, -4., 4.);
+      hNtrk[i]            = fGlobalHist.make<TH1F>(Form("hNtrk_%d", i),"",2000,0.,2000.);
+      
+      //reco corrected
+      //hpt_eff[i]          = fGlobalHist.make<TH1F>(Form("hpt_eff_%d", i), "", 30, 0., 3.);
+      hpt_eff[i]          = fGlobalHist.make<TH1F>(Form("hpt_eff_%d", i), "", 500, 0., 50.);
+      heta_eff[i]         = fGlobalHist.make<TH1F>(Form("heta_eff_%d", i), "", etaBins_.size()-1, &etaBins_[0]);
+      hphi_eff[i]         = fGlobalHist.make<TH1F>(Form("hphi_eff_%d", i), "", 62, -TMath::Pi(), TMath::Pi());
+      hnHits_eff[i]       = fGlobalHist.make<TH1F>(Form("hnHits_eff_%d", i), "", 50, 0., 50.);
+      hptreso_eff[i]      = fGlobalHist.make<TH1F>(Form("hptreso_eff_%d", i), "", 100, 0., 1.);
+      hchi2_eff[i]        = fGlobalHist.make<TH1F>(Form("hchi2_eff_%d", i), "", 100, 0, 10.);
+      hDCAZ_eff[i]        = fGlobalHist.make<TH1F>(Form("hDCAZ_eff_%d", i), "", 80, -4., 4.);
+      hDCAXY_eff[i]       = fGlobalHist.make<TH1F>(Form("hDCAXY_eff_%d", i), "", 80, -4., 4.);
+      }*/
+}
+
+
+RaghuEffTest::~RaghuEffTest() // Destructor 
+{
+}
+
+//---------------method called for each event-------------------------------------------------------
+
+void
+RaghuEffTest::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
+{
+  
+  LoopCMWVertices(iEvent, iSetup);
+
+}
+
+//----------------method called once each job just before starting event loop---------------------------
+
+void
+RaghuEffTest::beginJob()
+{
+}
+
+//-------------method called once each job just before ending the event loop--------------------------------------------
+
+void
+RaghuEffTest::endJob()
+{
+}
+
+//==============================================================================================
+
+void
+RaghuEffTest::fillDescriptions(edm::ConfigurationDescriptions&  descriptions)
+{
+  edm::ParameterSetDescription desc;
+  desc.setUnknown();
+  descriptions.addDefault(desc);
+}
+
+//=============================================================================
+
+void
+RaghuEffTest::LoopCMWVertices( const edm::Event& iEvent, const edm::EventSetup& iSetup)
+{
+  using namespace edm;
+  using namespace std;
+
+
+  //HF Sum calculation
+  /*  Handle<CaloTowerCollection> towers;
+  iEvent.getByToken(caloTowerTags_,towers);
+  double etHFtowerSumPlus=0.;
+  double etHFtowerSumMinus=0.;
+  for( size_t i = 0; i<towers->size(); ++ i){
+    const CaloTower & tower = (*towers)[ i ];
+    double eta = tower.eta();
+    bool isHF = tower.ietaAbs() > 29;
+    if(isHF && eta > 0){
+      etHFtowerSumPlus += tower.pt();
+    }
+    if(isHF && eta < 0){
+      etHFtowerSumMinus += tower.pt();
+    }
+  }
+  double etHFtowerSum=etHFtowerSumPlus + etHFtowerSumMinus;
+  */
+
+  
+  //track collection
+  auto trks = iEvent.getHandle( trackTags_ );
+  //const auto& trks = iEvent.get(trackTags_);
+  auto trksgen = iEvent.getHandle( trackTagsgen_ );
+
+  // access tracks chi2/ndf
+  // auto chi2Map = iEvent.getHandle( chi2Map_ ); // uncomment for MAOD
+
+  edm::Handle<GenEventInfoProduct> genInfo;
+
+  iEvent.getByToken(genInfoToken_, genInfo);
+
+  float pthatw = genInfo->weight();
+
+
+  
+  //vtx collection
+  auto pvs = iEvent.getHandle( vtxTags_ );
+  /*//const auto& recoVertices = iEvent.get(vtxTags_);
+  double bestvzError, bestvxError, bestvyError;
+  const auto& v = recoVertices[0];
+
+    xBestVtx_=(v.position().x());
+    yBestVtx_=(v.position().y());
+    zBestVtx_=(v.position().z());
+    bestvzError = v.zError();                                                            
+    bestvxError = v.xError();                                                            
+    bestvyError = v.yError();*/
+     //best vertex
+  double bestvzError, bestvxError, bestvyError;
+  math::XYZPoint bestvtx;
+  math::Error<3>::type vtx_cov;
+  if ( !pvs->empty() )
+    {
+      const reco::Vertex& vtx = (*pvs)[0];
+      bestvzError = vtx.zError();
+      bestvxError = vtx.xError();
+      bestvyError = vtx.yError();
+      bestvtx = vtx.position();
+      vtx_cov = vtx.covariance();      
+    }
+  else
+    { 
+      return; 
+    }
+  
+  
+  
+  
+  if ( zBestVtx_ < zminVtx_ || zBestVtx_ >= zmaxVtx_ ) return; 
+
+  //********* start track loop *********
+  // gen loop~~~~~~~~~~
+  std::cout<<"Event"<<std::endl;
+  for (auto const& iter_tk_gn : *trksgen)
+    {
+      if(iter_tk_gn.status() != 1) continue;
+      
+      // Get eta, pt, and charge of the track
+      double gen_pt = iter_tk_gn.pt();
+      double gen_eta = iter_tk_gn.eta();
+      int gen_charge = iter_tk_gn.charge();
+      double gen_phi = iter_tk_gn.phi();
+      
+      //selected tracks
+      if (gen_pt<0.1) continue;
+      if( gen_charge == 0 ) continue;
+      //if( gen_pt <= 0.3 || gen_pt >= 3.0 ) continue;
+      //if( gen_pt <= 0.3 || gen_pt >= 50.0 ) continue;
+      if( gen_eta <= -1. || gen_eta >= 1. ) continue;
+
+      //      std::cout<<" gen pT "<<gen_pt<<" gen eta "<<gen_eta<<" gen_phi "<<gen_phi<<std::endl; 
+      hpt_gen_inc->Fill(gen_pt,pthatw);
+      heta_gen_inc->Fill(gen_eta,pthatw);
+      hphi_gen_inc->Fill(gen_phi,pthatw);
+
+      /*      hpt_gen[centbin]->Fill(gen_pt);
+      heta_gen[centbin]->Fill(gen_eta);
+      hphi_gen[centbin]->Fill(gen_phi);*/
+    }
+  
+  // reco loop~~~~~~~~~~
+  int trkIndx = -1;
+  // Loop over tracks
+
+  for (auto const& iter_tk : *trks) // uncoment for AOD 
+    //  for (auto const& trk : *trks) // uncoment for miniAOD
+  //for (unsigned it = 0; it < trks.size(); ++it) 
+  {
+      trkIndx++;
+
+      // uncomment  for MAOD
+      
+      //if ( !trk.hasTrackDetails() ) continue;
+      //auto iter_tk = trk.pseudoTrack();
+      
+
+      double pterror = iter_tk.ptError();
+      double vzErr=bestvzError;
+      double vxErr=bestvxError;
+      double vyErr=bestvyError;
+
+      double dxy = iter_tk.dxy(bestvtx);
+      double dz = iter_tk.dz(bestvtx);
+      double dxysigma = sqrt(iter_tk.dxyError()*iter_tk.dxyError()+vxErr*vyErr);
+      double dzsigma = sqrt(iter_tk.dzError()*iter_tk.dzError()+vzErr*vzErr);
+      
+      // Get eta, pt, and charge of the track
+      double pt = iter_tk.pt();
+      double eta = iter_tk.eta();
+      int charge = iter_tk.charge();
+      double phi = iter_tk.phi();
+      //auto hit_pattern = iter_tk.hitPattern();
+      
+      //HI specific cuts
+      //double chi2ndof = ( double ) ( *chi2Map )[ trks->ptrAt( trkIndx ) ]; // uncomment for MAOD
+      //double chi2ndof = iter_tk.normalizedChi2(); // uncomment for AOD
+      double dcaxy = (dxy/dxysigma);
+      double dcaz = (dz/dzsigma);
+      double ptreso = (fabs(pterror) / pt);
+      int nHits = iter_tk.numberOfValidHits();
+      //double chi2n = ( chi2ndof / hit_pattern.trackerLayersWithMeasurement() );
+      int algo  = iter_tk.algo();
+      
+      //selected tracks
+      if( charge == 0 ) continue;
+      if( iter_tk.quality(reco::TrackBase::qualityByName("highPurity")) != 1 ) continue;
+      /*if( ptreso > 99999999.0 ) continue; // 0.1 nominal
+      if( ptreso < 0.) continue; // original
+      if(pt > 10)
+	{
+	  if( ptreso > 0.1) continue;
+	}
+	else
+	{
+	  if( ptreso < 0.) continue;
+	}
+      
+      if( fabs(dcaz) > 3.0 ) continue;
+      if( fabs(dcaxy) > 3.0 ) continue;
+      //if( chi2n > 99999999.0) continue; //0.18
+      //if( chi2n < 0.) continue;
+      //if( nHits < 0. ) continue;
+      
+      int count = 0;
+      for(unsigned i = 0; i < algoParameters_.size(); i++)
+	{
+	  if( algo == algoParameters_[i] ) count++;
+	}
+      //      if( count == 0 ) continue;
+      
+      */
+      //if( pt <= 0.3 || pt >= 3.0 ) continue;
+      //if( pt <= 0.3 || pt >= 50.0 ) continue;
+      //if( eta <= -1. || eta >= 1. ) continue;
+      //if (pt<0.1) continue;
+      float eff = hEff2D->GetBinContent(hEff2D->GetXaxis()->FindBin(eta), hEff2D->GetYaxis()->FindBin(pt));
+      float fak = hFak2D->GetBinContent(hFak2D->GetXaxis()->FindBin(eta), hFak2D->GetYaxis()->FindBin(pt));
+      float sec = hSec2D->GetBinContent(hSec2D->GetXaxis()->FindBin(eta), hSec2D->GetYaxis()->FindBin(pt));
+      float mul = hMul2D->GetBinContent(hMul2D->GetXaxis()->FindBin(eta), hMul2D->GetYaxis()->FindBin(pt));
+
+
+      //float weight=1. ;
+      
+      //float weight = (1. - fak)/eff;
+
+      //float correction = trkEff->getCorrection(pt, eta, (int)centralityBin);
+
+      //std::cout<<"Correction factor is: "<<weight<<"  "<<correction<<std::endl;
+      
+      //  float weight = ((1.0 - fak)*(1.0 - sec))/(eff*(1.0 + mul));
+      float trkweight = ((1.0 - fak)*(1.0 - sec))/(eff);
+      //float weight=1.;
+      //cout<<weight<<endl;
+      //=========Filling histograms======================
+      
+      std::cout<<" Reco pt "<<pt<<" Reco eta "<<eta<<" Reco phi "<<phi<<" eff correction "<<trkweight<<std::endl;
+      std::cout<<" dca xy "<<fabs(dcaxy)<<" dca z "<<fabs(dcaz)<<" pthatw "<<pthatw<<" Charge "<<charge<<" Purity "<<iter_tk.quality(reco::TrackBase::qualityByName("highPurity"))<<std::endl<<std::endl;
+      
+      hpt_inc->Fill(pt,pthatw);
+      hpt_inc_corr->Fill(pt,trkweight*pthatw);
+      heta_inc->Fill(eta,pthatw);
+      hphi_inc->Fill(phi,pthatw);
+      
+      //  hHF_Ntrk->Fill(etHFtowerSum,trkIndx);
+      
+      /*    hpt[centbin]->Fill(pt);
+      heta[centbin]->Fill(eta);
+      hphi[centbin]->Fill(phi);
+      hnHits[centbin]->Fill(nHits);
+      hptreso[centbin]->Fill(ptreso);
+      hchi2[centbin]->Fill(chi2n);
+      hDCAZ[centbin]->Fill(dcaz);
+      hDCAXY[centbin]->Fill(dcaxy);
+      hNtrk[centbin]->Fill(trkIndx);
+      
+      hpt_eff[centbin]->Fill(pt, weight);
+      heta_eff[centbin]->Fill(eta, weight);
+      hphi_eff[centbin]->Fill(phi, weight);
+      hnHits_eff[centbin]->Fill(nHits, weight);
+      hptreso_eff[centbin]->Fill(ptreso, weight);
+      hchi2_eff[centbin]->Fill(chi2n, weight);
+      hDCAZ_eff[centbin]->Fill(dcaz, weight);
+      hDCAXY_eff[centbin]->Fill(dcaxy, weight);*/
+    } //end of Track loop
+      std::cout<<" Ntrks "<<trkIndx<<std::endl;  
+
+      hNtrk_inc->Fill(trkIndx,pthatw);
+      //hHF_Ntrk->Fill(etHFtowerSum,trkIndx);
+}//end of LoopCMWVertices
+
+DEFINE_FWK_MODULE(RaghuEffTest);

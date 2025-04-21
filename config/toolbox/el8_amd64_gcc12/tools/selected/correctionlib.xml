@@ -1,0 +1,10 @@
+<tool name="correctionlib" version="2.6.4-3c999e2858ebb066cae488cce87483b2" revision="1">
+  <lib name="correctionlib"/>
+  <client>
+    <environment name="CORRECTIONLIB_BASE" default="/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/py3-correctionlib/2.6.4-3c999e2858ebb066cae488cce87483b2"/>
+    <environment name="INCLUDE" default="$CORRECTIONLIB_BASE/lib/python3.9/site-packages/correctionlib/include"/>
+    <environment name="LIBDIR" default="$CORRECTIONLIB_BASE/lib/python3.9/site-packages/correctionlib/lib"/>
+    <environment name="BINDIR" default="$CORRECTIONLIB_BASE/bin"/>
+  </client>
+  <runtime name="PATH" default="$BINDIR" type="path"/>
+</tool>

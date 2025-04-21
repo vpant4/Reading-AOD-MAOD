@@ -1,0 +1,19 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "HeavyIonsAnalysisMuonAnalysisAuto": {
+        "FILES": "",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "TrackingTools/IPTools",
+    "MuonAnalysis/MuonAssociators"
+  ]
+}

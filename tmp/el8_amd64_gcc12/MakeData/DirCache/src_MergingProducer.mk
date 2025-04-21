@@ -1,0 +1,3 @@
+ALL_SUBSYSTEMS+=MergingProducer
+subdirs_src_MergingProducer = src_MergingProducer_generalAndHiPixelTracks
+subdirs_src += src_MergingProducer

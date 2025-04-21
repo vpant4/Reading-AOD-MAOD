@@ -1,0 +1,23 @@
+{
+  "CUDNN_BASE": "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cudnn/8.9.7.29-d40a4ae5134520c7947ee4bc45dfdd3b",
+  "INCLUDE": [
+    "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cudnn/8.9.7.29-d40a4ae5134520c7947ee4bc45dfdd3b/include"
+  ],
+  "LIB": [
+    "cudnn"
+  ],
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/cudnn/8.9.7.29-d40a4ae5134520c7947ee4bc45dfdd3b/lib64"
+  ],
+  "TOOLNAME": "cudnn",
+  "TOOLREVISION": "1",
+  "TOOLVERSION": "8.9.7.29-d40a4ae5134520c7947ee4bc45dfdd3b",
+  "USE": [
+    "cuda"
+  ],
+  "VARIABLES": [
+    "CUDNN_BASE",
+    "INCLUDE",
+    "LIBDIR"
+  ]
+}

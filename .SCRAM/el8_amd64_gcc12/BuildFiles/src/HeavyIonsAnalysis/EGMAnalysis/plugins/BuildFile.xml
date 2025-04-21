@@ -1,0 +1,26 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "HeavyIonsAnalysisEGMAnalysisAuto": {
+        "FILES": "",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "CommonTools/UtilAlgos",
+    "DataFormats/PatCandidates",
+    "Geometry/CaloGeometry",
+    "Geometry/Records",
+    "HeavyIonsAnalysis/EGMAnalysis",
+    "RecoEgamma/EgammaTools",
+    "CommonTools/Egamma",
+    "TrackingTools/IPTools",
+    "rootcore"
+  ]
+}

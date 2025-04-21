@@ -1,0 +1,6 @@
+<tool name="lwtnn_x86-64-v2" version="2.14.1-d45f7e5c0f5c3f77403b29698f20466b" revision="1">
+  <client>
+    <environment name="X86_64_V2_LIBDIR" default="/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/lwtnn_x86-64-v2/2.14.1-d45f7e5c0f5c3f77403b29698f20466b/lib"/>
+  </client>
+  <runtime name="X86_64_V2_PATH" value="/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/lwtnn_x86-64-v2/2.14.1-d45f7e5c0f5c3f77403b29698f20466b/bin" type="path"/>
+</tool>

@@ -1,0 +1,24 @@
+{
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "NAME": "HeavyIonsAnalysisZDCAnalysis",
+  "USE": [
+    "root",
+    "FWCore/Framework",
+    "FWCore/PluginManager",
+    "FWCore/ParameterSet",
+    "DataFormats/Common",
+    "DataFormats/Candidate",
+    "DataFormats/CaloTowers",
+    "DataFormats/HcalDigi",
+    "CommonTools/UtilAlgos",
+    "CommonTools/CandUtils",
+    "TrackingTools/TransientTrack",
+    "MagneticField/Records",
+    "CalibFormats/HcalObjects",
+    "DQMServices/Core"
+  ]
+}

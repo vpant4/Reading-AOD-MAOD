@@ -1,0 +1,1 @@
+testMergingProducerMergingPixAndGenTP MergingProducer/generalAndHiPixelTracks/test/test_catch2_MergingPixAndGen.cc MergingProducer/generalAndHiPixelTracks/test/test_catch2_main.cc

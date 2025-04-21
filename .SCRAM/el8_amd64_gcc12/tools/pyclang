@@ -1,0 +1,9 @@
+{
+  "PYCLANG_BASE": "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/llvm/18.1.6-3d69b6cede73e484e5df3dbf64f2683e",
+  "TOOLNAME": "pyclang",
+  "TOOLREVISION": "1",
+  "TOOLVERSION": "18.1.6-3d69b6cede73e484e5df3dbf64f2683e",
+  "VARIABLES": [
+    "PYCLANG_BASE"
+  ]
+}

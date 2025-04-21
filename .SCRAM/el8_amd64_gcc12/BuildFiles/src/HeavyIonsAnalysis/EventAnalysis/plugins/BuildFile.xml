@@ -1,0 +1,33 @@
+{
+  "BUILDPRODUCTS": {
+    "LIBRARY": {
+      "HeavyIonsAnalysisEventAnalysisAuto": {
+        "FILES": "",
+        "TYPE": "lib"
+      }
+    }
+  },
+  "FLAGS": {
+    "EDM_PLUGIN": [
+      "1"
+    ]
+  },
+  "USE": [
+    "CommonTools/UtilAlgos",
+    "DataFormats/L1GlobalTrigger",
+    "DataFormats/L1TGlobal",
+    "DataFormats/ParticleFlowCandidate",
+    "DataFormats/PatCandidates",
+    "FWCore/Framework",
+    "FWCore/ParameterSet",
+    "FWCore/PluginManager",
+    "FWCore/ServiceRegistry",
+    "HLTrigger/HLTcore",
+    "L1Trigger/L1TNtuples",
+    "DataFormats/HeavyIonEvent",
+    "SimGeneral/HepPDTRecord",
+    "SimDataFormats/GeneratorProducts",
+    "rootcore",
+    "heppdt"
+  ]
+}

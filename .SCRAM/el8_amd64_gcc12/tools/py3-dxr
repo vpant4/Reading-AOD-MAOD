@@ -1,0 +1,18 @@
+{
+  "LIBDIR": [
+    "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/py3-dxr/1.0.x-679a6f5964d8cc4c53c0c81d4c7c4cf3/lib"
+  ],
+  "PY3_DXR_BASE": "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/py3-dxr/1.0.x-679a6f5964d8cc4c53c0c81d4c7c4cf3",
+  "RUNTIME": {
+    "PATH:PATH": [
+      "/cvmfs/cms.cern.ch/el8_amd64_gcc12/external/py3-dxr/1.0.x-679a6f5964d8cc4c53c0c81d4c7c4cf3/bin"
+    ]
+  },
+  "TOOLNAME": "py3-dxr",
+  "TOOLREVISION": "1",
+  "TOOLVERSION": "1.0.x-679a6f5964d8cc4c53c0c81d4c7c4cf3",
+  "VARIABLES": [
+    "PY3_DXR_BASE",
+    "LIBDIR"
+  ]
+}

@@ -1,0 +1,5 @@
+<tool name="rootspectrum" version="6.30.09-12b7f37c839e665e5ed498257af80796" revision="1">
+  <info url="http://root.cern.ch/root/"/>
+  <lib name="Spectrum"/>
+  <use name="roothistmatrix"/>
+</tool>

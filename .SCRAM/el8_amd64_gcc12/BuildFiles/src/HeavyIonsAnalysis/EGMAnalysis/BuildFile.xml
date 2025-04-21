@@ -1,0 +1,15 @@
+{
+  "EXPORT": {
+    "LIB": [
+      "1"
+    ]
+  },
+  "NAME": "HeavyIonsAnalysisEGMAnalysis",
+  "USE": [
+    "DataFormats/EgammaReco",
+    "DataFormats/EgammaCandidates",
+    "RecoEgamma/EgammaTools",
+    "TrackingTools/TransientTrack",
+    "TrackingTools/Records"
+  ]
+}
